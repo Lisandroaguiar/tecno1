@@ -56,8 +56,8 @@ void draw() {
   text("P3 (" + x3 + ", " + y3 + ")", x3 + 10, y3 - 10);
   push();
   fill(255,0,0,30);
-  stroke(0);
-  
+  stroke(255,0,0,100);
+  strokeWeight(1.5);
   rect(posX,posY,tamX,tamY);
   pop();
   text("Generar bezier",posXtxt,posYtxt);
@@ -85,7 +85,27 @@ void mouseClicked(){
 
 if(mouseX> posX && mouseX<posX+tamX && mouseY > posY && mouseY< posY+tamY){
   println("BEZIER GENERADO!!! copia y pega en tu sketch:");
-  println("bezier("+x0+","+y0+","+x1+","+y2+","+x2+","+y2+","+x3+","+y3+");");
+  println("bezier("+x0+","+y0+","+x1+","+y1+","+x2+","+y2+","+x3+","+y3+");");
 }
 
+}
+
+void mouseMoved(){
+
+if(mouseX> posX && mouseX<posX+tamX && mouseY > posY && mouseY< posY+tamY){
+ cursor(HAND);
+}
+  else if (dist(mouseX, mouseY, x0, y0) < 10) {
+cursor(HAND);
+  } else if (dist(mouseX, mouseY, x1, y1) < 10) {
+cursor(HAND);
+
+  } else if (dist(mouseX, mouseY, x2, y2) < 10) {
+cursor(HAND);
+
+  } else if (dist(mouseX, mouseY, x3, y3) < 10) {
+cursor(HAND);
+
+  }
+else{cursor(ARROW);}
 }
