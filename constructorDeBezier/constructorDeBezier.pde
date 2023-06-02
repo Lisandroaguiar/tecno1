@@ -5,7 +5,7 @@ float x2, y2;  // Segundo punto de control
 float x3, y3;  // Punto final
 
 void setup() {
-  size(600, 400);
+  size(800, 400);
   
   // Inicializar los puntos de control en posiciones iniciales
   x0 = 100;
@@ -62,4 +62,5 @@ void mouseDragged() {
     x3 = mouseX;
     y3 = mouseY;
   }
+  println("bezier("+x0+","+y0+","+x1+","+y2+","+x2+","+y2+","+x3+","+y3+");");
 }
