@@ -3,8 +3,11 @@ float x0, y0;  // Punto inicial
 float x1, y1;  // Primer punto de control
 float x2, y2;  // Segundo punto de control
 float x3, y3;  // Punto final
-
+int tamX, tamY; 
+float posX, posY, posXtxt,posYtxt;
 void setup() {
+  
+  
   size(800, 400);
   
   // Inicializar los puntos de control en posiciones iniciales
@@ -16,6 +19,12 @@ void setup() {
   y2 = 300;
   x3 = width - 100;
   y3 = height / 2;
+  tamX=100;
+  tamY=33;
+  posY=height*0.75+tamY;
+  posX= width/2-tamX/2;
+  posXtxt=posX+tamX/6.7;
+  posYtxt=posY+tamY/1.7;
 }
 
 void draw() {
@@ -45,6 +54,14 @@ void draw() {
   text("P1 (" + x1 + ", " + y1 + ")", x1 + 10, y1 - 10);
   text("P2 (" + x2 + ", " + y2 + ")", x2 + 10, y2 - 10);
   text("P3 (" + x3 + ", " + y3 + ")", x3 + 10, y3 - 10);
+  push();
+  fill(255,0,0,30);
+  stroke(0);
+  
+  rect(posX,posY,tamX,tamY);
+  pop();
+  text("Generar bezier",posXtxt,posYtxt);
+  
 }
 
 void mouseDragged() {
@@ -62,5 +79,13 @@ void mouseDragged() {
     x3 = mouseX;
     y3 = mouseY;
   }
+}
+
+void mouseClicked(){
+
+if(mouseX> posX && mouseX<posX+tamX && mouseY > posY && mouseY< posY+tamY){
+  println("BEZIER GENERADO!!! copia y pega en tu sketch:");
   println("bezier("+x0+","+y0+","+x1+","+y2+","+x2+","+y2+","+x3+","+y3+");");
+}
+
 }
